@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 const api = {
-  key:"INSERT API KEY HERE",
+  key:"Placeholder",
   base:"https://api.openweathermap.org/data/2.5/"
 }
 
@@ -17,7 +17,6 @@ function App() {
           setQuery('');
           console.log(result);
       });
-
     }
   }
   
@@ -59,6 +58,10 @@ function App() {
             <div className="temp">
               {Math.round(weather.main.temp)}°c
             </div>
+            <div className={(typeof weather.weather[0].main != "undefined")
+              ? ((weather.weather[0].main === "Clouds")
+              ? 'icon clouds' : 'icon clear')
+              : 'icon'}/>
             <div className="weather">
               {weather.weather[0].main}
             </div>
